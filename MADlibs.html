@@ -1,0 +1,212 @@
+<!--
+making MadLIBs
+how do we show/hide? display. visibility
+reference the core concept topics to assist you
+22 innerHTML
+25 events
+26 removals
+29 entering Text
+23 change CSS
+className=""
+display vs visibility
+28 enter key
+focus() blur()
+cursor pointer
+preventing empty inputs
+reseting the form to try again
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Master MadLib</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="madLibs.css">
+    <style>
+        div {
+            border: 1px solid red;
+            background-color: #c7af90;
+        }
+        .displayNone {
+            display: none;
+        }
+        .displayBlock {
+            display: block;
+        }
+   </style>
+</head>
+
+<body>
+<!--    <img id="img_input" src="house01.png">-->
+    <div id="inputPanel">
+        <h2>Adventure Awaits!</h2>
+        <h4>Please answer the following questions to begin.</h4>
+        
+        <p>Your first name:
+            <input id="firstName" type="text" placeholder="First Name">
+        </p>
+        <p>Your favorite color:
+            <input id="favColor" type="text" placeholder="Favorite Color">
+        </p>
+        <p>Name a magical Place:
+            <input id="place" type="text" placeholder="Magical Place">
+        </p>
+        <p>Your favorite animal:
+            <input id="animal" type="text" placeholder="Favorite Animal">
+        </p>
+         <p>Name an action:
+            <input id="verb" type="text" placeholder="Action goes here">
+        </p>
+         <p>Name an emotion:
+            <input id="emotion" type="text" placeholder="Emotion">
+        </p>
+         <p>Name a city you like:
+            <input id="city" type="text" placeholder="city">
+        </p>
+         <p>Name a cute animal:
+            <input id="cuteAnimal" type="text" placeholder="A cute animal">
+        </p>
+        <p>Name a candy:
+            <input id="candy" type="text" placeholder="Candy">
+        </p>
+         <p>Name an item:
+            <input id="item" type="text" placeholder="Item">
+        </p>
+        <button id="submit">Submit your answers</button>
+        <p id="warning">You must answer all questions to proceed
+            . Please check your answers.</p>
+
+    </div>
+    <div id="outputPanel">
+        <p>And so your Story is told</p>
+        <p id="theStory">junk</p>
+        <button id="again">Again?</button>
+    </div>
+    <script>
+        var inputPanel = document.querySelector("#inputPanel");
+        
+        var outputPanel = document.querySelector("#outputPanel");
+    
+        var warning = document.querySelector("#warning");
+
+        var submit = document.querySelector("#submit");
+        submit.addEventListener("click", writeStory, false);
+        submit.style.cursor = "pointer";
+
+        var again = document.querySelector("#again");
+        again.addEventListener("click", resetPage, false);
+        submit.style.cursor = "pointer";
+
+        document.querySelector('#firstName').focus();
+
+        var firstName = document.querySelector('#firstName');
+        var favColor = document.querySelector("#favColor");
+        var place = document.querySelector('#place');
+        var theStory = document.querySelector("#theStory");
+
+        window.addEventListener("keydown", keydownHandler, false);
+
+        firstName.focus();
+        
+        inputPanel.className = "displayBlock";
+        outputPanel.className = "displayNone";
+        warning.className = "displayNone";
+        
+        function keydownHandler(event) {
+            if (event.keycode === 13) {
+                console.log("Enter key pressed");
+                writeStory();
+            }
+        }
+
+        function checkComplete() {
+//            var warningText = "Please provide: ";
+            var warningArray = [];
+            //List Own Values
+            if (firstName.value == ""){
+                 return false;
+            }
+            else if (favColor.value == ""){
+               return false;
+            }
+            else if (place.value == ""){
+               return false;
+            }
+            else if (animal.value == ""){
+               return false;
+            }
+            else if (verb.value == ""){
+               return false;
+            }
+            else if (emotion.value == ""){
+               return false;
+            }
+            else if (city.value == ""){
+               return false;
+            }
+            else if (candy.value == ""){
+               return false;
+            }
+             else if (cuteAnimal.value == ""){
+               return false;
+            }
+             else if (item.value == ""){
+               return false;
+            }else{
+                return true;
+            }
+        }
+  var finishedStory = "";
+        function writeStory() {
+            //grab the input values to write the story
+            //verify the form before writing the story
+            if (checkComplete() == true){
+           
+                finishedStory += "<p>You feel rather " + emotion.value + " today and decide to take a new route for your morning walk. As you cross the street you spot something rather unusual.";
+                
+                 finishedStory += " It appears to be a " + favColor.value + animal.value + ".";
+                
+                 finishedStory += " Surprised by what you see you " + verb.value +"! Curiosity gets the best of you and so you follow the " + favColor.value + animal.value + " into the woods. "; 
+                  
+                 finishedStory += "You emerge to find that you are no longer back home in " + city.value + ".</p>";
+                
+                 finishedStory += "<p>“Welcome " + firstName.value + " to " + place.value + ". We have been waiting for you. Please, won’t you help us?!” ";
+                
+                 finishedStory +="Spoke the princess who looked awfully like a " + candy.value + ".";
+                 
+                 finishedStory +="“Only you can defect the " + cuteAnimal.value + " with the magic item in your pocket.”</p>";
+                 
+                 finishedStory +="<p>You look down at your pockets and reaching in to pull out a " + item.value + ". Amazed at what you have, you knew this was the start to your crazy adventure.</p>";
+                
+   
+            theStory.innerHTML = finishedStory;
+
+            inputPanel.className = "displayNone";
+            outputPanel.className = "displayBlock";
+            warning.className = "displayNone";
+
+            }else {
+                console.log("the form was not complete");
+                warning.className = "displayBlock";
+            }
+       }
+
+        function resetPage() {
+            //put stuff here to reset the page so the user can try again
+            inputPanel.className = "displayBlock";
+            outputPanel.className = "displayNone";
+            warning.className = "displayNone";
+//            firstName.value = "";
+//            favColor.value = "";
+//            place.value = "";
+
+            firstName.focus();
+
+
+        }
+    </script>
+</body>
+
+</html>
+

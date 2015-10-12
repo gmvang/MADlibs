@@ -1,0 +1,211 @@
+<!--
+making MadLIBs
+how do we show/hide? display. visibility
+reference the core concept topics to assist you
+22 innerHTML
+25 events
+26 removals
+29 entering Text
+23 change CSS
+className=""
+display vs visibility
+28 enter key
+focus() blur()
+cursor pointer
+preventing empty inputs
+reseting the form to try again
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Master MadLib</title>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" type="text/css" href="madLibs.css">-->
+    <style>
+        div {
+            border: 1px solid red;
+            background-color: #c7af90;
+        }
+        .displayNone {
+            display: none;
+        }
+        .displayBlock {
+            display: block;
+        }
+   </style>
+</head>
+
+<body>
+<!--    <img id="img_input" src="house01.png">-->
+    <div id="inputPanel">
+        <h2>Please anwser these questions to begin your Adventure.</h2>
+        
+        <p>Your first name:
+            <input id="firstName" type="text" placeholder="First Name">
+        </p>
+        <p>Your favorite color:
+            <input id="favColor" type="text" placeholder="Favorite Color">
+        </p>
+        <p>Name a Magical Place:
+            <input id="place" type="text" placeholder="Magical Place">
+        </p>
+        <p>Your favorite animal:
+            <input id="animal" type="text" placeholder="Favorite Animal">
+        </p>
+         <p>Name an action:
+            <input id="verb" type="text" placeholder="Verb">
+        </p>
+         <p>Type a sound you like:
+            <input id="sound" type="text" placeholder="Sound">
+        </p>
+         <p>What one word describes your personality:
+            <input id="word" type="text" placeholder="Descriptive Word">
+        </p>
+         <p>Name of a friend:
+            <input id="friendName" type="text" placeholder="Friend">
+        </p>
+        <p>What are you afraid of:
+            <input id="afraid" type="text" placeholder="Afraid of">
+        </p>
+         <p>A Girls name you like:
+            <input id="girlName" type="text" placeholder="Girls Name">
+        </p>
+        <button id="submit">Submit your answers</button>
+        <p id="warning">You must answer all questions to proceed
+            . Please check your answers.</p>
+
+    </div>
+    <div id="outputPanel">
+        <p>Your story....</p>
+        <p id="theStory">junk</p>
+        <button id="again">Again?</button>
+    </div>
+    <script>
+        var inputPanel = document.querySelector("#inputPanel");
+        
+        var outputPanel = document.querySelector("#outputPanel");
+    
+        var warning = document.querySelector("#warning");
+
+        var submit = document.querySelector("#submit");
+        submit.addEventListener("click", writeStory, false);
+        submit.style.cursor = "pointer";
+
+        var again = document.querySelector("#again");
+        again.addEventListener("click", resetPage, false);
+        submit.style.cursor = "pointer";
+
+        document.querySelector('#firstName').focus();
+
+        var firstName = document.querySelector('#firstName');
+        var favColor = document.querySelector("#favColor");
+        var place = document.querySelector('#place');
+        var theStory = document.querySelector("#theStory");
+
+        window.addEventListener("keydown", keydownHandler, false);
+
+        firstName.focus();
+        
+        inputPanel.className = "displayBlock";
+        outputPanel.className = "displayNone";
+        warning.className = "displayNone";
+        
+        function keydownHandler(event) {
+            if (event.keycode === 13) {
+                console.log("Enter key pressed");
+                writeStory();
+            }
+        }
+
+        function checkComplete() {
+//            var warningText = "Please provide: ";
+            var warningArray = [];
+            //List Own Values
+            if (firstName.value == ""){
+                 return false;
+            }
+            else if (favColor.value == ""){
+               return false;
+            }
+            else if (place.value == ""){
+               return false;
+            }
+            else if (animal.value == ""){
+               return false;
+            }
+            else if (verb.value == ""){
+               return false;
+            }
+            else if (sound.value == ""){
+               return false;
+            }
+            else if (word.value == ""){
+               return false;
+            }
+            else if (friendName.value == ""){
+               return false;
+            }
+             else if (afraid.value == ""){
+               return false;
+            }
+             else if (girlName.value == ""){
+               return false;
+            }else{
+                return true;
+            }
+        }
+ var finishedStory = "";
+        function writeStory() {
+            //grab the input values to write the story
+            //verify the form before writing the story
+            if (checkComplete() == true){
+            
+                finishedStory += "<p>The sky was clear and the wind was refreshing. You head out for your usual morning walk but instead of the usual route, you decide to take a new route. You head long a trail that leads into what looks like a shortcut through a small patch of trees. As you begin to head down the path you spot something rather unusual. It appears to look like a tiny " + favColor.value + animal.value + ". </p>";
+                
+                finishedStory += "<p>Caught by surprise you " + verb.value + "Also feeling rather curious, you decide to follow this creature through the woods. </p>";
+                finishedStory += "<p>You emerge from the woods and find yourself in a strange new place. The is sky filled with small floating islans and the field of flowers make" + sound.value + "sounds. You turn around to to head back to but the path is gone! There is nothing more than forest of thick trees now.</p>";
+
+                finishedStory += "You turn back around and spot that strange creature standing in the field and just looking at you. “Well come on " + firstName.value + "!"; 
+                
+                finishedStory += "We have to get there soon.” it shouts out to you in a " + word.value + " voice. Knowing there is nothing else you can do, you follow behind." 
+                
+                finishedStory += "“I know what you're thinking " + firstName.value +". You are astonished that I can speak! Well of course I can! By the way, my name is " + friendName.value +".” said " + friendName.value + ". “Where are headed?” you ask. “You'll see when we get there” replied" + friendName.value + ". </p> <p>Not long " +friendName.value+ " and you make it to a bridge covered in a thick fog. “Now before we cross, I need to tell you something. No matter what is offered to you, you must not accept any thing as long as we are on the bridge. Try not to say anything to them as well.” says " + friendName.value + ". “But why is that and who is “them”?” you ask. “They, are lost and unwanted, always want something in return, something bad.” replies " + riendName.value + ". “Come now, we must keep going.”"; 
+                
+                finishedStory += "Because of the thick fog, you cannot see when the bridge ends. In the fog you can see that something starts taking shape. “There are so many of them!”, you shout out. Dark shadows that resemble" + afraid.value + " approach you and begin pestering to you. “What do you want most " +firstName.value + "? I can give you anything.” said a shadow. “I can take you home" + firstName.value + "if you let me!” said another shadow.</p>"; 
+            
+                finishedStory += "<p>You do your best to not to be drawn in by any of what they said. What seemed like a life time, you both make it finally out of the fog and across the bridge. You see royal guards and a beautiful young lady approach.</p> <p>“Welcome to " + place.value += "."; 
+                
+                finishedStory += "I am Princess " + girlName.value + " and I've been waiting for your arrive. We need your help.” she spoke gracefully to you. At that moment, you knew this was where your story truly would begin.</p>";
+                
+            theStory.innerHTML = finishedStory;
+
+            inputPanel.className = "displayNone";
+            outputPanel.className = "displayBlock";
+            warning.className = "displayNone";
+
+            }else {
+                console.log("the form was not complete");
+                warning.className = "displayBlock";
+            }
+       }
+
+        function resetPage() {
+            //put stuff here to reset the page so the user can try again
+            inputPanel.className = "displayBlock";
+            outputPanel.className = "displayNone";
+            warning.className = "displayNone";
+//            firstName.value = "";
+//            favColor.value = "";
+//            place.value = "";
+
+            firstName.focus();
+
+
+        }
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,32 @@
+     <p>Your first name:
+            <input id="firstName" type="text" placeholder="First Name">
+        </p>
+        <p>Your favorite color:
+            <input id="favColor" type="text" placeholder="Favorite Color">
+        </p>
+        <p>Name a Magical Place:
+            <input id="place" type="text" placeholder="Magical Place">
+        </p>
+        <p>Your favorite animal:
+            <input id="animal" type="text" placeholder="Favorite Animal">
+        </p>
+         <p>Name an action:
+            <input id="verb" type="text" placeholder="Verb">
+        </p>
+         <p>Type a sound you like:
+            <input id="sound" type="text" placeholder="Sound">
+        </p>
+         <p>What one word describes you:
+            <input id="word" type="text" placeholder="Descriptive Word">
+        </p>
+         <p>Name of a friend:
+            <input id="friendName" type="text" placeholder="Friend">
+        </p>
+        <p>What are you afraid of:
+            <input id="afraid" type="text" placeholder="Afraid of">
+        </p>
+         <p>A Girls name you like:
+            <input id="girlName" type="text" placeholder="Girls Name">
+        </p>
+        <button id="submit">Submit your answers</button>
+        <p id="warning">Please answer all questions.</p>

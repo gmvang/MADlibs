@@ -1,0 +1,63 @@
+/*---Styles for MADlibs*/
+@font-face {
+    font-family:'3dumbregular';
+    src: url('webfontkit-3D/3dumb-webfont.eot');
+    src: url('webfontkit-3D/3dumb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('webfontkit-3D/3dumb-webfont.woff2') format('woff2'),
+         url('webfontkit-3D/3dumb-webfont.woff') format('woff'),
+         url('webfontkit-3D/3dumb-webfont.ttf') format('truetype'),
+         url('webfontkit-3D/3dumb-webfont.svg#3dumbregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background: black;
+    text-align: center;
+    color: aliceblue;
+}
+
+#inputPanel{
+    background-image: url(house01.png);
+/*    margin-top: -730px;*/
+    max-height: 800px;
+    min-height: 400px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+/*
+#img_input{
+   max-height: 800px;
+    min-height: 400px;
+    max-width: 100%;
+    min-width: 100%;
+    z-index: 2;
+}
+*/
+
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+
+#inputPanel h2{
+   font-family: "3dumbregular";
+   font-size: 36px;
+   line-height: 36px;
+}
+
+#inputPanel h4{
+    font-size: 26px;
+    margin-top: -30px;
+}
+
+#outputPanel{
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 18px;
+    text-align: left;
+}
