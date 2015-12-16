@@ -25,7 +25,7 @@ reseting the form to try again
     <link rel="stylesheet" type="text/css" href="madLibs.css">
     <style>
         div {
-            border: 1px solid red;
+/*            border: 1px solid red;*/
             background-color: #c7af90;
         }
         .displayNone {
@@ -79,10 +79,11 @@ reseting the form to try again
 
     </div>
     <div id="outputPanel">
-        <p>And so your Story is told</p>
+        <p>Your story unfolds....</p>
         <p id="theStory">junk</p>
         <button id="again">Again?</button>
     </div>
+    
     <script>
         var inputPanel = document.querySelector("#inputPanel");
         
@@ -96,7 +97,7 @@ reseting the form to try again
 
         var again = document.querySelector("#again");
         again.addEventListener("click", resetPage, false);
-        submit.style.cursor = "pointer";
+        again.style.cursor = "pointer";
 
         document.querySelector('#firstName').focus();
 
@@ -165,7 +166,7 @@ reseting the form to try again
            
                 finishedStory += "<p>You feel rather " + emotion.value + " today and decide to take a new route for your morning walk. As you cross the street you spot something rather unusual.";
                 
-                 finishedStory += " It appears to be a " + favColor.value + animal.value + ".";
+                 finishedStory += " It appears to be a " + favColor.value + " " + animal.value + ".";
                 
                  finishedStory += " Surprised by what you see you " + verb.value +"! Curiosity gets the best of you and so you follow the " + favColor.value + animal.value + " into the woods. "; 
                   
@@ -194,13 +195,23 @@ reseting the form to try again
 
         function resetPage() {
             //put stuff here to reset the page so the user can try again
+          
+            verb.value = "";
+            emotion.value = "";
+            city.value = "";
+            candy.value = "";
+            cuteAnimal.value = "";
+            item.value = "";
+            firstName.value = "";
+            favColor.value = "";
+            place.value = "";
+            animal.value = "";
+            
             inputPanel.className = "displayBlock";
             outputPanel.className = "displayNone";
             warning.className = "displayNone";
-//            firstName.value = "";
-//            favColor.value = "";
-//            place.value = "";
-
+//            animal.value = "";
+            
             firstName.focus();
 
 
